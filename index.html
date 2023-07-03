@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The Friends quiz that's actually difficult</title>
+        <link rel="stylesheet" href="sakura.css" type="text/css">
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 95vh;
+                flex-direction: column;
+                text-align: center;
+                height: 100%;
+            }
+
+            main {
+              flex: 1 0 auto;
+            }
+
+            footer {
+              flex-shrink: 0;
+            }
+
+            #answer {
+                display: none;
+                font-weight: 100;
+            }
+        </style>
+        <script>
+            var qaPairs = [
+                {
+                    question: "What is the name of the actress Joey works with in the alien play?",
+                    answer: "Kate"
+                },
+                {
+                    question: "Where is Ross and Emily's honeymoon?",
+                    answer: "Athens, Greece"
+                },
+                {
+                    question: "When Chandler and Monica are having a secret bath together, what drink do they order?",
+                    answer: "Diet Coke"
+                },
+                {
+                    question: "What was the name of the cab driver in London?",
+                    answer : "Angus"
+                },
+                {
+                    question: "Who is Howard?",
+                    answer : "The maintenance guy in Ross's/Ugly Naked Guy's apartment building."
+                },
+                {
+                    question: "What body part does Rachel not like being touched?",
+                    answer : "Eyes"
+                },
+                {
+                    question: "What is Joey's ATM code?",
+                    answer : "5639"
+                },
+                {
+                    question: "What Casino does Joey work at in Vegas?",
+                    answer : "Caesars Palace"
+                },
+                {
+                    question: "What is Joey's boat called?",
+                    answer : "The Mr Bowmont"
+                },
+                {
+                    question: "According to Rachel, what is Carroll's full name?",
+                    answer : "Carroll Lesbian"
+                },
+                {
+                    question: "Chandler and Joey both attend the funeral of Monica and Ross's grandmother. What is the name of that grandmother?",
+                    answer : "Althea"
+                },
+                {
+                    question: "What does Rachel bid on at the charity benefit her, Joey, and Phoebe got to?",
+                    answer : "A trip to Paris"
+                },
+                {
+                    question: "What apartment number does Monica live in?",
+                    answer : "20"
+                },
+                {
+                    question: "What is Phoebe's address?",
+                    answer : "5 Morten Street, Apartment 14."
+                },
+                {
+                    question: "How does Jessica Lockhart die?",
+                    answer : "She's thrown from a horse into an electric fence."
+                },
+                {
+                    question: "What is the name of Chandler & Monica's wedding photographer?",
+                    answer : "Jeffrey"
+                },
+                {
+                    question: "What is Joey's shoe size?",
+                    answer : "7"
+                },
+                {
+                    question: "What gift does Mona get Ross after visiting Atlantic City?",
+                    answer : "Salt-water taffy."
+                },
+                {
+                    question: "What is triskaidekaphobia?",
+                    answer : "Fear of the number 13."
+                },
+                {
+                    question: "Who's hugs are reserved for people staying in America?",
+                    answer : "Joey's"
+                },
+                {
+                    question: "How many women go in and out the semi-private labour room before Rachel gives birth??",
+                    answer : "5"
+                },
+                {
+                    question: "Who did Phoebe's fake boyfriend Vikram used to date?",
+                    answer : "Oprah"
+                },
+                {
+                    question: "What song does Kenneth sing at Mike's karaoke bar?",
+                    answer : "I Touch Myself"
+                },
+                {
+                    question: "What is the name of the play that Joey sends everyone to when he's having his secret roof top Soap Opera party?",
+                    answer : "Why don't you like me?"
+                },
+                {
+                    question: "Name a character who at some point in the show wears two belts.",
+                    answer: "Joey or Richard Crosby (played by Gary Oldman)."
+                },
+                {
+                    question: "What did Phoebe's David go to Minsk to study?",
+                    answer: "The posatronic distillation of subatomic particles."
+                },
+                {
+                    question: "Where do Phoebe and Mike go for their one year anniversary?",
+                    answer: "A Knick's game."
+                },
+                {
+                    question: "Which Friends put a turkey on their heads?",
+                    answer: "Joey and Monica"
+                },
+                {
+                    question: "Name the four categories of Monica's towels named in The Quiz?",
+                    answer: "Everyday use, fancy, guest, fancy guest."
+                },
+                {
+                    question: "What is the name of Chandler and Ross's college band.",
+                    answer: "Way, No Way"
+                },
+                {
+                    question: "When Joey is auditioning for the French play, what region of France does Phoebe say that Joey is from?",
+                    answer: "Estel Lauder"
+                },
+                {
+                    question: "How long does it actually take Joey to <i>'down'</i> a gallon of milk?",
+                    answer: "30 seconds."
+                },
+                {
+                    question: "What are Monica and Chandler's babies called?",
+                    answer: "Erica and Jack"
+                },
+                {
+                    question: "What high school do Monica, Rachel, and Ross go to?",
+                    answer: "Lincoln High"
+                },
+                {
+                    question: "Who is the first person we see Monica date?",
+                    answer: "Paul the Wine Guy"
+                },
+                {
+                    question: "What does the homeless lady offer to Phoebe in exchange for $1000?",
+                    answer: "A tinfoil hat."
+                },
+                {
+                    question: "Who convinces Chandler to quit smoking?",
+                    answer: "Alan or Phoebe."
+                },
+                {
+                    question: "What's Joey's mum's name?",
+                    answer: "Gloria"
+                },
+                {
+                    question: "What teams does Carol play for at college?",
+                    answer: "Lacross and golf."
+                },
+                {
+                    question: "Name all the countries that we know Ross has visited:",
+                    answer: "China, Egypt, Canada, Barbados, and England."
+                },
+                {
+                    question: "How many coffee cups are on the Central Perk logo?",
+                    answer: "2"
+                },
+                {
+                    question: "What poops in Julie's lap on the bus to the airport in China?",
+                    answer: "A chicken"
+                },
+                {
+                    question: "Who's hair does Phoebe cut?",
+                    answer: "Monica, Julie, and Joey's"
+                },
+                {
+                    question: "According to Joey, what is the most beautiful, natural thing in the world?",
+                    answer: "Boobs"
+                },
+                {
+                    question: "What are the fragrances that Joey promotes?",
+                    answer: "Dijon for Men, Aramis, and Hombré."
+                },
+                {
+                    question: "According to Mr Krieger what was Mr Heckles doing before he died?",
+                    answer: "Sweeping"
+                },
+                {
+                    question: "What is in Ross's <i>'briefcase of facts'</i>?",
+                    answer: "Fossils."
+                },
+                {
+                    question: "Where does Chandler get trapped with Victoria's Secret model Jill Goodacre?",
+                    answer: "An ATM vestibule."
+                },
+                {
+                    question: "How much RAM does Chandler's laptop have in season 2?",
+                    answer: "12mb."
+                },
+                {
+                    question: "What occupation did Phoebe think her biological Dad had?",
+                    answer: "A tree surgeon."
+                },
+                {
+                    question: "What musical instrument can Ugly Naked Guy play?",
+                    answer: "The cello, or a saxaphone."
+                },
+                {
+                    question: "What does the bracelet that Joey gets Chandler say on it?",
+                    answer: "To my best bud."
+                },
+                {
+                    question: "When Joey moves out of the apartment, who gets to keep the foosball table?",
+                    answer: "Chandler"
+                },
+                {
+                    question: "Chandler once dated a girl who thought that Sean Penn is the capital of what country?",
+                    answer: "Cambodia."
+                },
+                {
+                    question: "According to Gunther, how did Bryce on All My Children die?",
+                    answer: "Burried in an avalanche."
+                },
+                {
+                    question: "Eddie is the crazy roommate that moves in with Chandler after Joey moves out. What is Eddie's ex-girlfriend called?",
+                    answer: "Tilly."
+                },
+                {
+                    question: "Every 4th July Rachel's family used to go out onto her father's boat to watch the fireworks. Who from Rachel's family was not mentioned in that story?",
+                    answer: "Amy."
+                },
+                {
+                    question: "Which one of the Friends kisses Rachel's mum?",
+                    answer: "Joey."
+                },
+                {
+                    question: "What does Monica tape to Phoebe and Ryan the submarine guy to stop them from scratching?",
+                    answer: "Oven mitts."
+                },
+                {
+                    question: "What is the <i>'girl guides'</i> group that Ross becomes a temporary member of to sell cookies?",
+                    answer: "The Brown Birds."
+                },
+                {
+                    question: "The <i>'Tray Spot'</i> is where the waitresses at Central Perk put the trays. What does Rachel thing the Tray Spot is?",
+                    answer: "A club that all the other waitresses go to."
+                },
+                {
+                    question: "What does Rachel offer Mark the first time they meet?",
+                    answer: "Her pickle from her burger."
+                },
+                {
+                    question: "What Italian leader did Joey's grandmother spit on?",
+                    answer: "Musolini."
+                },
+                {
+                    question: "What was Joey trying to spell with sticks in the snow when they broken down on the way to a skiing trip?",
+                    answer: "Help."
+                },
+                {
+                    question: "Which state is the company based in that Phoebe calls for two days to return her broken phone?",
+                    answer: "Utah."
+                },
+                {
+                    question: "How many pages are in the letter that Rachel gives Ross at the beach?",
+                    answer: "18 pages, (or 36). Front and back."
+                },
+                {
+                    question: "Who pees on Monica?",
+                    answer: "Chandler."
+                },
+                {
+                    question: "Who took Rachel to the prom?",
+                    answer: "Chip Matthews."
+                },
+                {
+                    question: "What colour fingernail does Monica lose in the Quiche?",
+                    answer: "Blue."
+                },
+                {
+                    question: "When is Rachel's birthday?",
+                    answer: "May 5th."
+                },
+                {
+                    question: "What is the name of the restaurant that Monica becomes the head chef of, after writing a bad review?",
+                    answer: "Alessandro's."
+                },
+                {
+                    question: "What does Joey call himself when he works at Monica's restaurant?",
+                    answer: "Dragon."
+                },
+                {
+                    question: "On the way to break up with the girl from Poughkeepsie, Ross falls asleep on the train. Where does the woman he ends up meeting live?",
+                    answer: "Nova Scotia."
+                },
+                {
+                    question: "What is the name of Frank's old dog?",
+                    answer: "Tumour."
+                },
+                {
+                    question: "Who can only eat Tic Tacs in even numbers?",
+                    answer: "Monica."
+                },
+                {
+                    question: "What movie do Chandler and Monica claim to be watching when they hook up in London?",
+                    answer: "My Giant."
+                },
+                {
+                    question: "When does Ross see Rachel in a two-piece?",
+                    answer: "The summer after 9th grade."
+                },
+                {
+                    question: "What beer would Joey _walk back to London for another frosty one of those bad boys_ for?",
+                    answer: "Boddingtons."
+                },
+                {
+                    question: "Which former president of the United States do Chandler and Monica see waiting for an elevator?",
+                    answer: "Donald Trump."
+                },
+                {
+                    question: "Who buys all of Ross' stuff when he moves in with Emily?",
+                    answer: "Gunther."
+                },
+                {
+                    question: "In the one where the gang reminisce about previous Thanksgivings, what is Joey thankful for?",
+                    answer: "The fall weather, and thongs."
+                },
+                {
+                    question: "What does Monica bring to the hospital when she chops off Chandler's toe?",
+                    answer: "A carrot."
+                },
+                {
+                    question: "Who's tennis rackets does Joey break?",
+                    answer: "Chandler and Rachel's."
+                },
+                {
+                    question: "Put the Friends in order of when they find out about Chandler and Monica.",
+                    answer: "Joey, Rachel, Phoebe, and Ross."
+                },
+                {
+                    question: "What is the name of the poem that Julio writes for Monica?",
+                    answer: "The Empty Vase."
+                },
+                {
+                    question: "What does Rachel order from the hotel concierge when her and Ross are drunk in Vegas?",
+                    answer: "Alcohol and beers."
+                },
+                {
+                    question: "Who does Phoebe make out with at Rachel's work?",
+                    answer: "Kenny the copy guy."
+                },
+                {
+                    question: "Where does Ross first jump out at the girls to explain the importance of Unagi?",
+                    answer: "The hallway between Monica and Joey's apartment."
+                },
+                {
+                    question: "Where do Monica and Chandler get married?",
+                    answer: "The Morgan Chase museum."
+                },
+                {
+                    question: "Which magazine called Rachel's Easyboy chair, <i>'Chair of the Year'</i>?",
+                    answer: "Sit Magazine."
+                },
+                {
+                    question: "What did Ross buy when he turned 30?",
+                    answer: "A sports car."
+                },
+                {
+                    question: "What country, other than Italy, can Joey trace his heritage back to?",
+                    answer: "Portugal - he's 1/16th Portuguese."
+                },
+                {
+                    question: "What song does Ross learn on the bagpipes?",
+                    answer: "Celebration by Kool and the Gang."
+                },
+                {
+                    question: "What was Joey's fake penis made out of, the one that he took to the audition?",
+                    answer: "Silly putty."
+                },
+                {
+                    question: "Which state is Mama's Little Bakery based in?",
+                    answer: "Illinois."
+                },
+                {
+                    question: "What is the name of the office supply company that Phoebe works for?",
+                    answer: "Empire Office Supplies."
+                },
+                {
+                    question: "In Joey's fake Europe story, what is the name of the mountain where he sees a woman crying?",
+                    answer: "Mount Tibidabo."
+                },
+                {
+                    question: "What is Chandlers middle name?",
+                    answer: "Muriel."
+                },
+                {
+                    question: "What is Monica's preferred alcoholic drink?",
+                    answer: "Scotch on the rocks with a twist, on a coaster."
+                },
+                {
+                    question: "What is the name of the lipstick brand that Joey advertises?",
+                    answer: "Ichiban."
+                },
+                {
+                    question: "What sentence does Phoebe try to teach Joey in French?",
+                    answer: "Je m'appelle Claude."
+                },
+                {
+                    question: "What is the name of Monica and Chandlers fertility doctor?",
+                    answer: "Dr Conely."
+                },
+                {
+                    question: "What episode featured a song with these lyrics <i>'boys, the trouble with boys, nothing but trouble'</i>.",
+                    answer: "The One with the Routine."
+                },
+                {
+                    question: "What is the self-help book that Monica, Phoebe, and Rachel read?",
+                    answer: "Be Your Own Wind Keeper."
+                },
+                {
+                    question: "Complete this commonly used saying: <i>'A promise between friends ...'</i>",
+                    answer: "<i>'means never having to give a reason.'</i>"
+                },
+                {
+                    question: "Where is Lake Mbosco?",
+                    answer: "The Congo."
+                },
+                {
+                    question: "Name a famous botanist?",
+                    answer: "Linda/Mona/Eric Clellaughen"
+                }
+            ];
+
+            var currentPairIndex = 0;
+            var questionElement;
+            var answerElement;
+
+            function showNextPair() {
+                questionElement.innerHTML = qaPairs[currentPairIndex].question;
+                answerElement.innerHTML = qaPairs[currentPairIndex].answer;
+                answerElement.style.display = "none";
+                currentPairIndex = (currentPairIndex + 1) % qaPairs.length;
+            }
+
+            function showAnswer() {
+                answerElement.style.display = "block";
+            }
+
+            document.addEventListener("keydown", function(event) {
+                if (event.code === "Space") {
+                    if (answerElement.style.display == "block") {
+                        showNextPair();
+                    } else {
+                        showAnswer();
+                    }
+                }
+            });
+
+            document.addEventListener("click", function() {
+                if (answerElement.style.display == "block") {
+                    showNextPair();
+                } else {
+                    showAnswer();
+                }
+            });
+
+            document.addEventListener("DOMContentLoaded", function() {
+                questionElement = document.getElementById("question");
+                answerElement = document.getElementById("answer");
+                showNextPair();
+            });
+
+            function shuffle(array) {
+                let currentIndex = array.length,  randomIndex;
+
+                // While there remain elements to shuffle.
+                    while (currentIndex != 0) {
+
+                        // Pick a remaining element.
+                            randomIndex = Math.floor(Math.random() * currentIndex);
+                        currentIndex--;
+
+                        // And swap it with the current element.
+                            [array[currentIndex], array[randomIndex]] = [
+                                array[randomIndex], array[currentIndex]];
+                    }
+
+                return array;
+            }
+
+            shuffle(qaPairs);
+        </script>
+    </head>
+    <body>
+        <main>
+            <h2 id="question"></h1>
+            <h3 id="answer"></h2>
+        </main>
+        <footer>
+            <hr>
+            <p>This is the Friends quiz that's actually hard, for people who watch the show <i>far</i> too much. Click, tap the screen, or press the <code>space</code> bar to view the answer and move into the next question.
+        </footer>
+    </body>
+</html>
