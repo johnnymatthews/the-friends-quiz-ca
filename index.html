@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+
+<!-- This site was made by johnnymatthews.dev while waiting for his mates to show up at the pub. -->
+<!-- You can find the repo for this game and submit suggestions/feedback/complaints/whatever at:  -->
+<!-- github.com/johnnymatthews/the-friends-quiz-ca -->
+<!-- GLHF -->
+
 <html>
     <head>
         <title>The Friends quiz that's actually difficult</title>
@@ -12,6 +18,7 @@
                 flex-direction: column;
                 text-align: center;
                 height: 100%;
+                font-size: 2.2vh;
             }
 
             main {
@@ -25,6 +32,10 @@
             #answer {
                 display: none;
                 font-weight: 100;
+            }
+
+            a {
+                text-decoration: underline;
             }
         </style>
         <script>
@@ -187,7 +198,7 @@
                 },
                 {
                     question: "Name all the countries that we know Ross has visited:",
-                    answer: "China, Egypt, Canada, Barbados, and England."
+                    answer: "Barbados, Canada, China, Egypt, and England."
                 },
                 {
                     question: "How many coffee cups are on the Central Perk logo?",
@@ -521,12 +532,12 @@
     </head>
     <body>
         <main>
-            <h2 id="question"></h1>
-            <h3 id="answer"></h2>
+            <h1 id="question"></h1>
+            <h2 id="answer"></h2>
         </main>
         <footer>
             <hr>
-            <p>This is the Friends quiz that's actually hard, for people who watch the show <i>far</i> too much. Click, tap the screen, or press the <code>space</code> bar to view the answer and move into the next question.
+            <p>So here's the deal; me and my wife watch <a href="https://en.wikipedia.org/wiki/Friends">Friends</a> <i>far too much</i>, so we made this quiz because all the other quizes were too easy. Click, tap, or press the <code>space</code> bar to view the answer and move into the next question.
         </footer>
     </body>
 </html>
