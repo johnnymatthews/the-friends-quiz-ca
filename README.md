@@ -5,3 +5,7 @@
 So I watch Friends, a lot. I threw this site together specifically to host the long list of Friends questions I've written down over the years.
 
 This repo uses the [Sakura CSS framework.](https://github.com/oxalorg/sakura) because I suck at design.
+
+## Suggestions
+
+Got a question you wanna add? [Create an issue](https://github.com/johnnymatthews/the-friends-quiz-ca/issues/new)!
